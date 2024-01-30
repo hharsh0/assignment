@@ -14,15 +14,15 @@ export default AuthContextProvider = ({ children }) => {
   const userisLoggedIn = !!authToken;
 
   const login = (token) => {
-    // console.log("loggin in");
+    console.log("loggin in");
     setAuthToken(token);
-    // console.log(token);
+    console.log(token);
     SecureStore.setItemAsync("token", token);
   };
 
-  // useEffect(() => {
-  //   console.log("auth-ctx", userisLoggedIn);
-  // }, [userisLoggedIn]);
+  useEffect(() => {
+    console.log("auth-ctx", userisLoggedIn);
+  }, [userisLoggedIn]);
 
   const logout = () => {
     setAuthToken(null);

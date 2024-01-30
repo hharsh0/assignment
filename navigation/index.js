@@ -19,18 +19,25 @@ export const AuthStack = () => {
 };
 
 export const MainStack = () => {
-  <Stack.Navigator>
-    <Stack.Screen
-      name="MainScreen"
-      component={MainScreen}
-      options={{ headerShown: false }}
-    />
-  </Stack.Navigator>;
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="MainScreen"
+        component={MainScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
 };
 
 const Navigation = () => {
-    const { isAuthenticated } = useContext(AuthContext);
-    return isAuthenticated ? <MainStack /> : <AuthStack />;
-}
+  const authCtx = useContext(AuthContext);
+  useEffect(() => {
+    console.log("index.tsx", authCtx.isAuthenticated);
+  }, [authCtx.isAuthenticated]);
+
+  return authCtx.isAuthenticated ? <MainStack /> : <AuthStack />;
+};
+
 
 export default Navigation;

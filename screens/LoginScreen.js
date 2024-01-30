@@ -16,7 +16,8 @@ const LoginScreen = () => {
   const [error, setError] = useState(null);
   const authCtx = useContext(AuthContext);
 
-  const handleSignIn = async () => {
+  const handleSignIn = () => {
+        console.log("handleSignIn");
         authCtx.login("token");
   };
 
@@ -50,7 +51,7 @@ const LoginScreen = () => {
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate("signup")}
+        // onPress={() => navigation.navigate("signup")}
         style={{ marginTop: 16 }}
       >
         <Text>Don't have an account? Sign Up</Text>
